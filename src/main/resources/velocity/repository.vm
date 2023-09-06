@@ -1,0 +1,109 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="theme-color" content="#000000"/>
+    <meta name="description" content="Web site created using create-react-app"/>
+
+    <meta name="decorator" content="bitbucket.repository.general">
+    <meta name="projectKey" content="$repository.project.key">
+    <meta name="repositorySlug" content="$repository.slug">
+    <meta name="activeTab" content="stackdrive-solution-plugin-tab">
+    <title>$repository.slug / $i18n.getText("stackdrive.main.label")</title>
+    <style>
+        #maintenance-spinner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #maintenance-spinner aui-spinner {
+            margin: 1em;
+        }
+
+        .custom-card-style {
+            border-radius: 3px;
+            box-shadow: 0 1px 1px rgba(9, 30, 66, 0.25),
+            0 0 1px 0 rgba(9, 30, 66, 0.31);
+            margin: 0 auto;
+            padding: 10px;
+            width: 20em;
+        }
+
+        #custom-spinner-example .aui-quicksearch input {
+            width: 20em;
+        }
+
+        #custom-spinner-example .aui-quicksearch.custom-quicksearch-indicator::after {
+            display: none;
+        }
+
+        #custom-spinner-example .aui-quicksearch.custom-quicksearch-indicator aui-spinner {
+            color: inherit;
+            position: absolute;
+            right: 20px;
+        }
+    </style>
+
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+
+<iframe id="maintenance" src="$stackDriveDto.solution" frameborder="no" style="position: absolute; width: 80%; height: 95%;">
+</iframe>
+
+<div id="maintenance-spinner">
+</div>
+
+<script>
+    (function () {
+        var spinner = document.createElement('aui-spinner');
+        spinner.setAttribute('size', 'large');
+
+        function startSearching() {
+            var $container = AJS.$('#maintenance-spinner');
+                $container.addClass('custom-quicksearch-indicator');
+                $container.append(spinner);
+        }
+
+        var url = "$stackDriveDto.health";
+
+        $(document).ready(function () {
+            startSearching();
+
+            require('bitbucket/util/server').ajax({
+                url: url,
+                statusCode: {
+                    '200': function (xhr, textStatus, errorThrown, dominantError) {
+                        return false; // do not handle this by default
+                        // return myDeferred.promise(); // resolve the request with my custom promise
+                        // return { shouldReload : true }; // open a dialog requesting the user to reload the page.
+                    }
+                }
+            }).done(function () {
+            }).fail(function () {
+                $("#maintenance").remove();
+                $("#maintenance-spinner").append(
+                        "<div class='aui-page-panel'>" +
+                        "<div class='aui-page-panel-inner'>" +
+                        "<section class='aui-page-panel-content'>" +
+                        "<h1>STACKDRIVE not available</h1>" +
+                        "<div class='aui-page-notification-description'>" +
+                        "<p>" +
+                        "Probably you don't connected to a proper <strong>VPN network</strong> or don't have <strong>developer access</strong>" +
+                        "</p>" +
+                        "</div>" +
+                        "</section>" +
+                        "</div>" +
+                        "</div>");
+            }).always(function () {
+                var $container = AJS.$('#maintenance-spinner');
+                    $container.removeClass('custom-quicksearch-indicator');
+                    $container.find(spinner).remove();
+            });
+        });
+    }());
+</script>
+</body>
+</html>

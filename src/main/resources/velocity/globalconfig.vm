@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>$i18n.getText("stackdrive.admin.label")</title>
+    <meta name="decorator" content="atl.admin" />
+
+    <meta name="activeTab" content="stackdrive-admin-plugin-tab">
+    <title>$i18n.getText("stackdrive.admin.label")</title>
+
+    $webResourceManager.requireResource("org.stackdrive.stack-drive-bitbucket:stack-drive-global-settings-resources")
+<body>
+<form id="admin" class="aui">
+    <div class="field-group">
+        <label for="front">$i18n.getText("stackdrive.admin.front.label")</label>
+        <input type="text" id="front" name="front" class="text">
+    </div>
+    <div class="field-group">
+        <label for="back">$i18n.getText("stackdrive.admin.back.label")</label>
+        <input type="text" id="back" name="back" class="text">
+    </div>
+    <div class="field-group">
+        <label for="stackdriveUser">$i18n.getText("stackdrive.admin.bitbucket.user.label")</label>
+        <input type="text" id="stackdriveUser" name="stackdriveUser" class="text">
+    </div>
+    <div class="field-group">
+        <label for="log">$i18n.getText("stackdrive.admin.log.label")</label>
+        <input type="text" id="log" name="log" class="text">
+    </div>
+    <div class="field-group">
+        <input type="submit" value="$i18n.getText("stackdrive.admin.save.label")" class="button">
+    </div>
+</form>
+</body>
+</html>

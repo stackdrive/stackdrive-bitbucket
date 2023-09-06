@@ -1,0 +1,39 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+
+    <meta name="decorator" content="bitbucket.project.settings">
+    <meta name="projectKey" content="$project.key">
+    <meta name="activeTab" content="stackdrive-project-settings-plugin-tab">
+    <title>$project.key / $i18n.getText("stackdrive.settings.label")</title>
+</head>
+<body>
+
+<header class="aui-page-header">
+    <div class="aui-page-header-inner">
+        <div class="aui-page-header-main"><h2>$i18n.getText("stackdrive.settings.label")</h2></div>
+    </div>
+</header>
+
+<form id="project" class="aui" method="post">
+
+    <fieldset class="group">
+        <legend><span>$i18n.getText("stackdrive.settings.project.pluginEnabled.legend")</span></legend>
+        <div class="checkbox">
+            #if( $stackDriveForm.pluginEnabled )
+                <input class="checkbox" type="checkbox" name="pluginEnabled"
+                       id="plugin-enabled" checked="checked">
+            #else
+                <input class="checkbox" type="checkbox" name="pluginEnabled"
+                       id="plugin-enabled">
+            #end
+            <label for="plugin-enabled">$i18n.getText("stackdrive.settings.pluginEnabled.label")</label>
+        </div>
+    </fieldset>
+
+    <div class="field-group">
+        <input type="submit" value="$i18n.getText("stackdrive.settings.save.label")" class="button">
+    </div>
+</form>
+</body>
+</html>
