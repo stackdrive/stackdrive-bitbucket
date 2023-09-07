@@ -1,0 +1,74 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+
+    <meta name="decorator" content="bitbucket.repository.settings">
+    <meta name="projectKey" content="$repository.project.key">
+    <meta name="repositorySlug" content="$repository.slug">
+    <meta name="activeTab" content="stackdrive-repository-settings-plugin-tab">
+    <title>$repository.slug / $i18n.getText("stackdrive.settings.label")</title>
+</head>
+<body>
+
+<header class="aui-page-header">
+    <div class="aui-page-header-inner">
+        <div class="aui-page-header-main"><h2>$i18n.getText("stackdrive.settings.label")</h2></div>
+    </div>
+</header>
+
+<form id="repository" class="aui" method="post">
+
+    <fieldset class="group">
+        <legend><span>$i18n.getText("stackdrive.settings.pluginEnabled.legend")</span></legend>
+        <div class="checkbox">
+            #if( $stackDriveForm.pluginEnabled )
+                <input class="checkbox" type="checkbox" name="pluginEnabled"
+                       id="plugin-enabled" checked="checked">
+            #else
+                <input class="checkbox" type="checkbox" name="pluginEnabled"
+                       id="plugin-enabled">
+            #end
+            <label for="plugin-enabled">$i18n.getText("stackdrive.settings.pluginEnabled.label")</label>
+        </div>
+    </fieldset>
+
+    <fieldset class="group">
+        <legend><span>$i18n.getText("stackdrive.settings.projectScope.legend")</span></legend>
+        <div class="checkbox">
+            #if( $stackDriveForm.projectScope )
+                <input class="checkbox" type="checkbox" name="projectScope"
+                       id="project-scope" checked="checked">
+            #else
+                <input class="checkbox" type="checkbox" name="projectScope"
+                       id="project-scope">
+            #end
+            <label for="project-scope">$i18n.getText("stackdrive.settings.projectScope.label")</label>
+        </div>
+    </fieldset>
+
+##    <div class="field-group">
+##        <label for="nexusLogin">$i18n.getText("stackdrive.settings.login.label")</label>
+##        #if( ! $stackDriveForm.nexusLogin )
+##            <input type="text" id="nexusLogin" name="nexusLogin" class="text">
+##        #else
+##            <input type="text" id="nexusLogin" name="nexusLogin" class="text" value="$stackDriveForm.nexusLogin">
+##        #end
+##    </div>
+##    <div class="field-group">
+##        <label for="nexusPassword">$i18n.getText("stackdrive.settings.password.label")</label>
+##        #if( ! $stackDriveForm.nexusPassword )
+##            <input type="password" id="nexusPassword" name="nexusPassword" class="text">
+##        #else
+##            <input type="password" id="nexusPassword" name="nexusPassword" class="text" value="$stackDriveForm.nexusPassword">
+##        #end
+##    </div>
+
+    <div class="field-group">
+        <input type="submit" value="$i18n.getText("stackdrive.settings.save.label")" class="button">
+    </div>
+</form>
+<div class="semi">
+    StackDrive.Web State: $stackDriveWebState StackDrive.Bitbucket Version: $stackDriveBitbucketVersion
+</div>
+</body>
+</html>

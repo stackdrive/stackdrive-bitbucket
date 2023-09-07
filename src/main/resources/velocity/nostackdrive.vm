@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="theme-color" content="#000000"/>
+    <meta name="description" content="Web site created using create-react-app"/>
+
+    <meta name="decorator" content="bitbucket.repository.general">
+    <meta name="projectKey" content="$repository.project.key">
+    <meta name="repositorySlug" content="$repository.slug">
+    <meta name="activeTab" content="stackdrive-solution-plugin-tab">
+    <title>$repository.slug / $i18n.getText("stackdrive.main.label")</title>
+</head>
+<body class="aui-page-notification aui-page-size-medium">
+    <div class="aui-page-panel">
+        <div class="aui-page-panel-inner">
+            <section class="aui-page-panel-content">
+                <h1>STACKDRIVE resouces not found</h1>
+                <div class="aui-page-notification-description">
+                    <p>
+                        <strong>stackdrive.properties</strong> and <strong>maintenance.json</strong> not found in your default branch.
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
